@@ -28,19 +28,43 @@ Tüm dosyaları paylaşımlı sunucunuzun public_html (veya www) klasörüne yü
 
 ### 2. Composer Bağımlılıklarını Yükleyin
 
-Sunucunuzda SSH erişimi varsa:
+**Seçenek A - SSH ile sunucuda:**
 
 ```bash
 composer install --no-dev --optimize-autoloader
 ```
 
-SSH erişiminiz yoksa, yerel bilgisayarınızda:
+**Seçenek B - Yerel bilgisayarınızda:**
 
 ```bash
 composer install --no-dev --optimize-autoloader
 ```
 
-Sonra `vendor/` klasörünü sunucuya yükleyin.
+Sonra `vendor/` klasörünü FTP ile sunucuya yükleyin.
+
+**Seçenek C - Tarayıcıdan otomatik (SSH YOK İSE):**
+
+```
+https://yourdomain.com/download-vendor.php
+```
+
+Tarayıcıda açın ve "Bağımlılıkları İndir ve Kur" butonuna tıklayın.
+
+**Seçenek D - Hazır paket (Manuel):**
+
+Yerel bilgisayarınızda proje klasöründe:
+
+```bash
+# Linux/Mac
+./build-vendor-package.sh
+
+# Windows
+build-vendor-package.bat
+```
+
+Oluşan `vendor.zip` dosyasını sunucuya yükleyip Extract edin.
+
+**Detaylı manuel kurulum için:** `MANUAL-VENDOR-INSTALL.md` dosyasına bakın.
 
 ### 3. Klasör İzinlerini Ayarlayın
 
