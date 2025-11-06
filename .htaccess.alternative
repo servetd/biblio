@@ -1,0 +1,26 @@
+# Basitleştirilmiş .htaccess
+# Eğer 500 hatası alıyorsanız, .htaccess dosyasını silin ve bu dosyayı .htaccess olarak yeniden adlandırın
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Dosya veya klasör değilse index.php'ye yönlendir
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Dizin listelemeyi engelle
+Options -Indexes
+
+# Hassas dosyaları koru
+<FilesMatch "^(composer\.(json|lock)|\.git)">
+    <IfVersion < 2.4>
+        Order allow,deny
+        Deny from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+        Require all denied
+    </IfVersion>
+</FilesMatch>
