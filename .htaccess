@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# Redirect to index.php if not a file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "^(composer\.(json|lock)|\.gitignore)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# PHP settings for shared hosting
+php_flag display_errors Off
+php_value upload_max_filesize 10M
+php_value post_max_size 10M

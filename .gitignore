@@ -1,0 +1,25 @@
+# Vendor
+/vendor/
+
+# Data
+/data/database.sqlite
+/data/uploads/*
+!/data/uploads/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
